@@ -27,7 +27,7 @@ body {
     transition: all 0.5s ease;
     transform: translateY(-30px);
      display:flex;
-     margin-bottom:0%;
+     margin-bottom:3%;
      margin-top:0%;
 
  }
@@ -211,7 +211,7 @@ html{
     background-color: transparent;
 }
 #main{
-    font-size:40px;
+    font-size:45px;
     font-weight: 900;
     background: linear-gradient(to right, red, blue);
     color: transparent;
