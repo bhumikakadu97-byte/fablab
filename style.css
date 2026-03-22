@@ -100,7 +100,7 @@ h2{
      inset 0 0 0.3rem #fff, inset 0 0 0.2rem #fff ,0 0 .4rem #3877FF,
      0 0 .4rem #3877FF , inset 0 0 .4rem #3877FF ;
 }
-html{
+.html{
     scroll-behavior: smooth;
     
 }
@@ -211,7 +211,7 @@ html{
     background-color: transparent;
 }
 #main{
-    font-size:45px;
+    font-size:50px;
     font-weight: 900;
     background: linear-gradient(to right, red, blue);
     color: transparent;
