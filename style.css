@@ -16,7 +16,7 @@ body {
 .welcome{
     height: 100%;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
  #welcome-text{
     font-size: 70px;
@@ -28,6 +28,7 @@ body {
     -webkit-text-fill-color: transparent;
     transition: all 0.5s ease;
     transform: translateY(-30px);
+     margin-bottom:0%;
 
  }
  #welcome-text{
@@ -210,7 +211,7 @@ html{
     background-color: transparent;
 }
 #main{
-    font-size: 60px;
+    font-size:45px;
     font-weight: 900;
     background: linear-gradient(to right, red, blue);
     color: transparent;
