@@ -236,20 +236,13 @@ html{
 #texthello{
     font-size: 40px;
     color:lightskyblue;
-    animation: floatGlow 1s infinite ease-in-out;
+    transform: translateY(30px);
+    animation: fadeSlide 1s infinite forwards;
 }
-@keyframes floatGlow{
-    0%{
+@keyframes fadeSlide{
+    to{
+        opacity:1;
         transform: translateY(0);
-        text-shadow: 0 0 5px #00f0ff;
-    }
-    50%{
-       transform: translateY(-15px);
-        text-shadow: 0 0 15px #00f0ff; 
-    }
-    100%{
-        transform: translateY(0);
-        text-shadow: 0 0 5px #00f0ff;
     }
 }
 
