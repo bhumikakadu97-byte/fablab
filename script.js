@@ -40,10 +40,8 @@ document.body.style.overflowY = 'scroll';
 
 
  document.getElementById("uibtn").addEventListener("click", function() {
-  window.location.href = "uiux.html";
+    window.location.href = "uiux.html#uiux";
 });
- 
-
 
 
 
