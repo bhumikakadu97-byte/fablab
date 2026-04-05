@@ -1033,7 +1033,7 @@ h2{
 
 
 
-.explore-btn{
+.btnui{
      margin-top: 8px;
     padding: 10px 20px;
      display :flex;
@@ -1053,7 +1053,7 @@ h2{
     height: 50px;
     
 }
-#explore-btn:hover{
+.btnui:hover{
     background-color: transparent;
     color: pink;
     border-color: lightskyblue;
