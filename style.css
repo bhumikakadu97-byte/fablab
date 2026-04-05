@@ -1033,7 +1033,7 @@ h2{
 
 
 
-.explore-btn{
+#explore-btn{
      margin-top: 8px;
     padding: 10px 20px;
     background-color:blue;
@@ -1052,7 +1052,7 @@ h2{
     height: 50px;
     
 }
-.explore-btn:hover{
+#explore-btn:hover{
     background-color: transparent;
     color: pink;
     border-color: lightskyblue;
