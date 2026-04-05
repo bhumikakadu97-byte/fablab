@@ -39,7 +39,7 @@ goBackBtn.addEventListener("click", function() {
 document.body.style.overflowY = 'scroll';
 
 
- document.getElementById("exploreBtn1").addEventListener("click", function() {
+ document.getElementById("uibtn").addEventListener("click", function() {
   window.location.href = "uiux.html";
 });
  
