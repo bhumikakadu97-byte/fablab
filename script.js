@@ -29,13 +29,6 @@ document.getElementById("contactBtn").addEventListener("click", function() {
 
 
 
-document.getElementById("moretab").addEventListener("click", function() {
-  window.location.href = "uiux.html";
-});
-
-
-
-
 const goBackBtn = document.getElementById("goBackBtn");
 const msite = document.getElementById("msite");
 
@@ -44,3 +37,11 @@ goBackBtn.addEventListener("click", function() {
 });
 
 document.body.style.overflowY = 'scroll';
+
+
+
+
+document.getElementById("uibtn").addEventListener("click", function() {
+  window.location.href = "uiux.html";
+});
+
