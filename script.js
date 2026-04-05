@@ -44,14 +44,6 @@ document.body.style.overflowY = 'scroll';
   window.location.href = "uiux.html";
 });
 
-const goBackBtn = document.getElementById("goBackBtn");
-const msite = document.getElementById("msite");
-
-goBackBtn.addEventListener("click", function() {
-    msite.scrollIntoView({ behavior: "smooth" }); // Sirf Main Site ke top par scroll
-});
-
-document.body.style.overflowY = 'scroll';
 
 
 
