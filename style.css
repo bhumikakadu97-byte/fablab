@@ -1042,10 +1042,10 @@ h2{
     transition: all ease 0.2s;
     font-family: sans-serif;
     border:0.2rem solid lightskyblue ;
-    height: 15px;
+    height: 10px;
     text-align: center;
     text-decoration:none;
-    width: 100px;
+    width: 80px;
    
 }
 .btnui:hover{
