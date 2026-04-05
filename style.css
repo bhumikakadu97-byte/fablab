@@ -1033,9 +1033,10 @@ h2{
 
 
 
-#explore-btn{
+.explore-btn{
      margin-top: 8px;
     padding: 10px 20px;
+     display :flex;
     background-color:blue;
     font-weight: 600;
     color: #fff;
