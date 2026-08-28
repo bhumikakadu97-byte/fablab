@@ -1,126 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta name="viewport"
-        content="width=device-width,
-        initial-scale=1.0">
-    <!--title of website-->
-    <title></title>
-    index.html
-    <link href="./style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhumika Kadu | Digital Fablab Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <!--opening page-->
-    <div id="welcome">
-        <h1 id=welcome-text> Welcome To My Digital Fablab Portfolio </h1>
-        <div class="logoimg">
-        <div class="logo">
-            <img src="./photos/Fablab logo.png" >
-        </div>
-        </div>
-        <h2>Transforming ideas into real-world projects 🚀</h2>
-        <div class="btnsec">
-            <button class="btn" onclick="goNext()" class="my-btn">Explore</button>
+
+    <!-- ================= TERMINAL WELCOME SCREEN ================= -->
+    <div id="welcome" class="welcome-screen">
+        <div class="matrix-grid-overlay"></div>
+        <div class="terminal-card">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">fablab_boot_sequence.sh</span>
+            </div>
+            <div class="terminal-body">
+                <p class="code-line"><span class="c-cyan">▶ initialization</span> ... success</p>
+                <p class="code-line"><span class="c-amber">▶ microcontrollers</span> ... loaded</p>
+                <p class="code-line"><span class="c-pink">▶ loading digital portfolio</span> ... 100%</p>
+                <h1 class="welcome-heading">Welcome To My Digital Fablab Portfolio</h1>
+                <p class="welcome-sub">Transforming structural ideas into real-world projects 🚀</p>
+                <button class="btn enter-btn" onclick="goNext()">
+                    <i class="fa-solid fa-terminal" style="margin-right: 8px;"></i>Initialize System
+                </button>
+            </div>
         </div>
     </div>
 
-
-    <!--Main page-->
-    <div id="msite">
-
+    <!-- ================= MAIN SITE CONTENT ================= -->
+    <div id="msite" style="display: none;">
+        
+        <!-- Sticky Navigation -->
         <nav class="navbar">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#education">Education</a>
-            <a href="#project">Projects</a>
+            <a href="#projects">Projects</a>
             <a href="#modules">Modules</a>
-            <a href="#declaration">Declaration</a>
             <a href="#contact">Contact</a>
-
         </nav>
 
-
-        <!--Home Section-->
-        <section id="home">
-            <div class="home-box">
+        <!-- Home Section -->
+        <section id="home" class="home-box">
             <div class="container">
-            <div class="right">
-                <div class="design">
-                <div class="circle"></div>
-                <div class="circle"></div>
+                <div class="right">
+                    <div class="design">
+                        <div class="circle outer-glow-ring"></div>
+                        <div class="circle inner-avatar-frame"></div>
+                    </div>
+                </div>
+                <div class="left">
+                    <div class="content">
+                        <div class="typewriter-wrapper">
+                            <span id="texthello" class="typewriter-text"></span><span class="cursor">|</span>
+                        </div>
+                        <h1 id="main">Bhumika Kadu</h1>
+                        <p id="nametext">
+                            CSE Student 👩‍💻 | Aspiring Java Developer ☕ | Exploring Digital Fabrication 🛠<br>
+                            From imagination to innovation — turning creative ideas into physical realities.
+                        </p>
+                        <div class="btncont">
+                            <a href="#contact" class="btn">Contact Me</a>
+                            <button class="btn btnres">Download Resume</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-                 <div class="left">
-                    <div class="content">
-                <h2 id="texthello">Hello, I am</h2>
-                <h1 id="main">Bhumika Kadu</h1 >
-                <p id="nametext">CSE student 👩‍💻 | Aspiring Java Developer ☕ |
-                     Exploring digital fabrication 🛠️<br>
-                From imagination to innovation - turning creative ideas into real-world
-                 projects through digital
-                    fabrication and technology.</p>
-                    <div class="btncont">
-                   <a href="./resume.pdf" download class="btnres"> Download Resume </a>
-                     <a href="#contact" class="btnres">Contact </a> 
-                    
-                </div>
-                 </div>
-                <div class="social">
-            
-                    <!-- Icons section -->
-                    <div class="icons">
-                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-                        <i class="fa-brands fa-linkedin"></i>
-                        <i class="fa-brands fa-message"></i>
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                </div>
         </section>
-        </header>
 
-
-        <!--About Section-->
-        <section id="about">
+        <!-- About Section -->
+       <section id="about">
             <div class="about-box">
-            <h2 id="abt">About</h2>
+            <h2 id="abt">About me</h2>
             <div class="flx">
-            <div class="avif">
-            <img src="./photos/myimage.avif">
-        </div>
             <div class="my">
-            <h3>Hi, I’m Bhumika 👋
+            <h3>
                 A curious CSE student who loves exploring technology, creativity, and innovation 💻✨
                 I enjoy building real projects at the Digital Fablab, learning new skills, and turning ideas into
                 reality 🚀</h3>
-            <h2>Exploring the Digital World</h2>
-            <h3>I am currently a part of FabLab, where I transform ideas into real-world projects using modern tools and
-                technologies. Through hands-on learning and experimentation, I am developing practical skills in design,
-                fabrication, innovation, and problem-solving to build solutions for the future. 🚀</h3>
-            <h2>
-                <div class="skill10">
-                    <button class="skill">Web Development</button>
-                    <button class="skill">UI/UX Design</button>
-                    <button class="skill">Computer Aided Designing</button>
-                    <button class="skill">Computer Aided Cutting</button>
-                    <button class="skill">3D printing & Designing</button>
-                    <button class="skill">PCB Design</button>
-                    <button class="skill">IOT & Embedded System</button>
-                    <button class="skill">Java</button>
-                    <button class="skill">Networking</button>
-                    <button class="skill">AI & ML</button>
-                </div>
+            <div class="my">
+         <h4>Hi, I’m Bhumika 👋</h4>
+
+        <p> I am a Computer Science student who is passionate about technology, creativity, and continuous learning. I enjoy exploring how technology can be used to turn ideas into meaningful and practical solutions. I am naturally curious and love learning new things, experimenting with different ideas, and challenging myself to improve with every project.</p>
+        <p>Being part of the Digital FabLab has given me the opportunity to learn through hands-on experience and work on real-world projects. Beyond technical skills, I value creativity, problem-solving, and the ability to learn from every experience.</p>
+        <p>My goal is to keep growing as a technology professional, explore emerging fields like AI and Machine Learning, and create projects that are useful, innovative, and impactful.</p>
+        </div>
                 </div>
                 </div>
                 </div>
 
-            </h2>
+            
         </section>
 
 
@@ -131,22 +105,22 @@
                         <div class="edu-content">
                             <div class="content">
                                 <div class="year">2025-2029<i class=></i></div>
-                                <h3>BE [CSE]</h3>
-                                <p>Pursuing Bachelor of Engineering Degree from SSGMCE, Shegaon.</p>
+                                <h3>BE Degree</h3>
+                                <p class="text">Pursuing Bachelor of Engineering Degree from SSGMCE, Shegaon.</p>
                             </div>
                         </div>
                         <div class="edu-content">
                             <div class="content">
                                 <div class="year">2025<i class=></i></div>
                                 <h3>HSC</h3>
-                                <p>Completed Hsc in Science Stream from Mother Teresa Science College with 88% .</p>
+                                <p class="text">Completed Hsc in Science Stream from Mother Teresa Science College with 88% .</p>
                             </div>
                         </div>
                         <div class="edu-content">
                             <div class="content">
                                 <div class="year">2023<i class=></i></div>
                                 <h3>SSC</h3>
-                                <p>Completed SSC From Mother Teresa Schoool with 99.40% .</p>
+                                <p class="text">Completed SSC From Mother Teresa Schoool with 99.40% .</p>
                             </div>
                         </div>
 
@@ -167,7 +141,7 @@
         <div class="mod-box">
         <div class="probox">
             <div class="mod1">
-            <h2>Web Development</h2>
+            <h2 id="p1">Web Development</h2>
             <img src="./photos/web.jpg">
             <h3>Seven Wonders of World</h3>
             <p>A responsive website showcasing the Seven Wonders of the World with images and short descriptions. It is
@@ -177,7 +151,7 @@
         </div>
         <!--diabetes predictor-->
         <div class="probox">
-            <h2>AIML</h2>
+            <h2 id="p1">AIML</h2>
             <img src="./photos/ai.jpg">
             <h3>🩺 Diabetes Predictor</h3>
             <p>A machine learning-based web application that predicts the possibility of diabetes based on user input
@@ -186,7 +160,7 @@
         </div>
         <!--Number guessing game-->
         <div class="probox">
-            <h2>Java</h2>
+            <h2 id="p1">Java</h2>
             <img src="./photos/java.jpg">
             <h3>🎮 Number Guessing Game</h3>
             <p>An interactive game where the user tries to guess a randomly generated number within limited attempts. It
@@ -213,17 +187,17 @@
                     </div>
                 </div>
                 <div class="boxs">
-                    <h2 onclick="openWeb()">UI/UX Design</h2>
+                    <h2>UI/UX Design</h2>
                     <img src="./photos/ui.jpg">
                     <div class="webtech">
-           <a href="uiux.html" class="btnui">Explore</a>
+            <button id="uiuxExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
                     <h2>Computer Aided Designing</h2>
                     <img src="./photos/comaiddes.jpg">
                     <div class="webtech">
-            <button id="moretab" >Explore</button>
+            <button id="cadExploreBtn" >Explore</button>
                     </div>
                 </div>
                 </div>
@@ -266,7 +240,7 @@
                     <h2>JAVA</h2>
                     <img src="./photos/javamod.jpg">
                     <div class="webtech">
-            <button id="moretab" >Explore</button>
+            <button id="javaExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
@@ -395,7 +369,7 @@
   </div>
 
   <div class="footer-bottom">
-    <p> © 2026 | Designed & Developed by Bhumika ✨</p>
+    <p>© 2025 | Designed & Developed by Bhumika ✨</p>
   </div>
 
 </footer>
