@@ -1,48 +1,82 @@
-function goNext(){
-    document.getElementById('welcome').style.display="none";
-    document.getElementById('msite').style.display="block";
-    document.documentElement.style.overflow="auto";
-    document.body.style.overflow="auto";
-    document.getElementById("welcome").style.display="none";
-    window.scrollTo({ top:0, behavior:"smooth"});
+// ===============================
+// WELCOME → MAIN SITE
+// ===============================
+function goNext() {
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("msite").style.display = "block";
+
+    document.documentElement.style.overflow = "auto";
+    document.body.style.overflow = "auto";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
+// ===============================
+// MODULE NAVIGATION
+// ===============================
+document.addEventListener("click", (event) => {
 
+    if (!event.target) return;
 
-// Web Development section open
+    switch (event.target.id) {
 
+        case "exploreBtn":
+            window.location.href = "mywebsec.html";
+            break;
 
+        case "uiuxExploreBtn":
+            window.location.href = "mywebsec2.html";
+            break;
 
-  document.getElementById("exploreBtn").addEventListener("click", function() {
-  window.location.href = "mywebsec.html";
-});
+        case "cadExploreBtn":
+            window.location.href = "mywebsec3.html";
+            break;
 
-document.getElementById("aboutBtn").addEventListener("click", function() {
-  window.location.href = "about.html";
-});
+        case "javaExploreBtn":
+            window.location.href = "mywebsec6.html";
+            break;
 
-document.getElementById("contactBtn").addEventListener("click", function() {
-  window.location.href = "contact.html";
-});
-
-
-
-
-const goBackBtn = document.getElementById("goBackBtn");
-const msite = document.getElementById("msite");
-
-goBackBtn.addEventListener("click", function() {
-    msite.scrollIntoView({ behavior: "smooth" }); // Sirf Main Site ke top par scroll
-});
-
-document.body.style.overflowY = 'scroll';
-
-
- document.getElementById("uibtn").addEventListener("click", function() {
-    window.location.href = "uiux.html#uiux";
+        default:
+            break;
+    }
 });
 
 
+// ===============================
+// BACK FROM ANY MODULE
+// ===============================
+window.addEventListener("DOMContentLoaded", () => {
+
+    if (window.location.hash === "#modules") {
+
+        const welcome = document.getElementById("welcome");
+        const msite = document.getElementById("msite");
+        const modules = document.getElementById("modules");
+
+        if (welcome && msite && modules) {
+
+            // Hide Welcome page
+            welcome.style.display = "none";
+
+            // Show Main site
+            msite.style.display = "block";
+
+            document.documentElement.style.overflow = "auto";
+            document.body.style.overflow = "auto";
+
+            // Same smooth effect for every module
+            setTimeout(() => {
+                modules.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 100);
+        }
+    }
+});
 
 
