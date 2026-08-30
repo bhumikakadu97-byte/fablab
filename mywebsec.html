@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Fablab - UI/UX</title>
+  <title>Digital Fablab - Web Development</title>
   <style>
 .canvas-grid-bg {
   position: fixed;
@@ -135,6 +135,7 @@
   max-height: 85vh;
   border: 2px solid var(--amber, #f2a93b);
   border-radius: 6px;
+  object-fit: contain;
 }
 
 .img-modal-close {
@@ -177,12 +178,6 @@
   font-weight: 700;
 }
 
-/* Go back button placement */
-.goBackBtn {
-  display: block;
-  margin: 0 auto 60px;
-}
-
 h1 {
   font-size: 25px;
 }
@@ -195,68 +190,86 @@ h1 {
     <h1 id="y">Digital Fablab</h1>
   </div>
 
-  <h1 id="webdev">UIUX</h1> 
-  <p class="pardev">Learn fundamental UI/UX principles, design thinking, and wireframing tools.</p>
+  <h1 id="webdev">Web Development</h1> 
+  <p class="pardev">Turn ideas into interactive websites using HTML, CSS, and JavaScript.
+Create real-world projects and bring your designs to life!</p>
 
   <div class="badabox">
     <div class="chhotobox">
       <h1>Day 1</h1>
       <ul>
-        <li>Intro to UI/UX principles & design thinking.</li>
-        <li>Difference between UI and UX with real examples.</li>
-        <li>Explored Figma interface, tools, and frames.</li>
-        <li>User research & problem identification basics.</li>
-        <li>Created first wireframe with shapes & text.</li>
+        <li>Basic tags & document structure</li>
+        <li>Headings & paragraphs</li> 
+        <li>Lists & basic formatting</li>
+        <li>Marquee tag</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/uiux1.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/pro1.jpeg')">View Image</button>
     </div>
 
     <div class="chhotobox">
       <h1>Day 2</h1>
       <ul>
-        <li>Wireframing for website & mobile layouts.</li>
-        <li>Alignment, spacing, hierarchy & balance.</li>
-        <li>Grids & layout structures for organization.</li>
-        <li>Created low-fidelity app prototype.</li>
-        <li>User flow & navigation planning.</li>
+        <li>How to add video</li>
+        <li>How to add audio</li> 
+        <li>How to add image</li>
+        <li>How to add table</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/uiux2.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/pro2.jpeg')">View Image</button>
     </div>
 
     <div class="chhotobox">
       <h1>Day 3</h1>
       <ul>
-        <li>High-fidelity UI screens with typography & color.</li>
-        <li>Design consistency via components & styles.</li>
-        <li>Auto-layout feature for responsive design.</li>
-        <li>Icons, images & reusable design elements.</li>
-        <li>Enhanced visual aesthetics & usability.</li>
+        <li>Basic form Elements.</li>
+        <li>Radio Button</li> 
+        <li>Dropdown List</li>
+        <li>Checkboxes and Submit Button</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/uiux3.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/pro3.jpeg')">View Image</button>
     </div>
 
     <div class="chhotobox">
       <h1>Day 4</h1>
       <ul>
-        <li>Prototyping & interaction design in Figma.</li>
-        <li>Transitions, animations & navigation links.</li>
-        <li>Clickable prototype for UX testing.</li>
-        <li>Usability testing & feedback handling.</li>
-        <li>Presented working prototype simulation.</li>
+        <li>Header</li>
+        <li>Footer</li> 
+        <li>Nav</li>
+        <li>CSS Selector</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/uiux4.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/pro4.jpeg')">View Image</button>
     </div>
 
     <div class="chhotobox">
       <h1>Day 5</h1>
       <ul>
-        <li>Finalized UI project workflow.</li>
-        <li>Applied design system & components.</li>
-        <li>Optimized layouts for better user experience.</li>
-        <li>Exported assets & shared professionally.</li>
-        <li>Prepared final project for portfolio.</li>
+        <li>Flexbox fundamentals</li>
+        <li>CSS Grid systems</li>
+        <li>Responsive design</li>
+        <li>Query creation</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/uiux5.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/pro5.jpeg')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 6</h1>
+      <ul>
+        <li>Variables</li>
+        <li>Functions</li> 
+        <li>Operators</li>
+        <li>Datatypes</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/pro6.png')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 7</h1>
+      <ul>
+        <li>Take input</li>
+        <li>Add Task</li> 
+        <li>Delete Task</li>
+        <li>Different Properties</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/pro7.jpeg')">View Image</button>
     </div>
   </div>
 
@@ -268,7 +281,8 @@ h1 {
 
   <script src="./script.js"></script>
   <script>
-    function openImgModal(src) {
+    function openImgModal(event, src) {
+      if (event) event.stopPropagation();
       const overlay = document.getElementById('imgModalOverlay');
       const img = document.getElementById('imgModalImage');
       img.src = src;
