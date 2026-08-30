@@ -179,7 +179,7 @@ document.addEventListener("click", (event) => {
     switch (event.target.id) {
 
         case "WebExploreBtn":
-            window.location.href = "mywebsec.html";
+            window.location.href = "uiux.html";
             break;
 
         case "uiuxExploreBtn":
