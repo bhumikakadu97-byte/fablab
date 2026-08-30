@@ -37,6 +37,7 @@
         
         <!-- Sticky Navigation -->
         <nav class="navbar">
+            
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#education">Education</a>
@@ -51,7 +52,7 @@
                 <div class="right">
                     <div class="design">
                         <div class="circle outer-glow-ring"></div>
-                        <div class="circle inner-avatar-frame"></div>
+                        <div class="circle inner-avatar-frame"><img src="./Fablab logo.png"></div>
                     </div>
                 </div>
                 <div class="left">
@@ -59,7 +60,7 @@
                         <div class="typewriter-wrapper">
                             <span id="texthello" class="typewriter-text"></span><span class="cursor">|</span>
                         </div>
-                        <h1 id="main">Bhumika Kadu</h1>
+                        <h1 id="main">Bhumika <span>Kadu</span></h1>
                         <p id="nametext">
                             CSE Student 👩‍💻 | Aspiring Java Developer ☕ | Exploring Digital Fabrication 🛠<br>
                             From imagination to innovation — turning creative ideas into physical realities.
@@ -68,6 +69,30 @@
                             <a href="#contact" class="btn">Contact Me</a>
                             <button class="btn btnres">Download Resume</button>
                         </div>
+                         <div class="social-icons">
+
+                <!-- GitHub -->
+                <a href="https://github.com/YOUR-USERNAME"
+                   target="_blank"
+                   aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/YOUR-USERNAME/"
+                   target="_blank"
+                   aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/YOUR-USERNAME/"
+                   target="_blank"
+                   aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+            </div>
                     </div>
                 </div>
             </div>
@@ -84,7 +109,7 @@
                 I enjoy building real projects at the Digital Fablab, learning new skills, and turning ideas into
                 reality 🚀</h3>
             <div class="my">
-         <h4>Hi, I’m Bhumika 👋</h4>
+         <h4>Hi, I’m Bhumika </h4>
 
         <p> I am a Computer Science student who is passionate about technology, creativity, and continuous learning. I enjoy exploring how technology can be used to turn ideas into meaningful and practical solutions. I am naturally curious and love learning new things, experimenting with different ideas, and challenging myself to improve with every project.</p>
         <p>Being part of the Digital FabLab has given me the opportunity to learn through hands-on experience and work on real-world projects. Beyond technical skills, I value creativity, problem-solving, and the ability to learn from every experience.</p>
@@ -135,39 +160,46 @@
 
         <!--Projects Section-->
         <section id="project">
+
             <div class="pro-box">
             <h1 id="mp">My Projects</h1>
+
         <!--Seven Wonders website-->
         <div class="mod-box">
         <div class="probox">
-            <div class="mod1">
             <h2 id="p1">Web Development</h2>
-            <img src="./photos/web.jpg">
-            <h3>Seven Wonders of World</h3>
-            <p>A responsive website showcasing the Seven Wonders of the World with images and short descriptions. It is
+            <img src="./web.jpg">
+            <h3 id="p3"> Seven Wonders of World</h3>
+            <p class="description">A responsive website showcasing the Seven Wonders of the World with images and short descriptions. It is
                 designed using HTML, CSS, and basic JavaScript to provide an interactive and user-friendly experience.
                 This project helped me improve my web design and layout skills.</p>
+                 <div class="learn-more">Learn more<span>-></span></div>
         </div>
-        </div>
+
         <!--diabetes predictor-->
         <div class="probox">
             <h2 id="p1">AIML</h2>
-            <img src="./photos/ai.jpg">
-            <h3>🩺 Diabetes Predictor</h3>
-            <p>A machine learning-based web application that predicts the possibility of diabetes based on user input
+            <img src="./ai.jpg">
+            <h3 id="p3">🩺 Diabetes Predictor</h3>
+            <p class="description">A machine learning-based web application that predicts the possibility of diabetes based on user input
                 data. It uses trained models to provide quick and accurate results. This project helped me understand
                 basic AI/ML concepts and real-world healthcare applications.</p>
+            <div class="learn-more">Learn more<span>-></span></div>
         </div>
+
+
         <!--Number guessing game-->
         <div class="probox">
             <h2 id="p1">Java</h2>
-            <img src="./photos/java.jpg">
-            <h3>🎮 Number Guessing Game</h3>
-            <p>An interactive game where the user tries to guess a randomly generated number within limited attempts. It
+            <img src="./java.jpg">
+            <h3 id="p3">🎮 Number Guessing Game</h3>
+            <p class="description">An interactive game where the user tries to guess a randomly generated number within limited attempts. It
                 is built using JavaScript with simple logic and user input handling. This project improved my
                 understanding of conditions, loops, and game logic.</p>
+                 <div class="learn-more">Learn more<span>-></span></div>
                 </div>
-        </div>
+         
+        </div>        
         </div>
 
         </section>
@@ -180,22 +212,22 @@
                 </div>
                 <div class="line">
                 <div class="boxs">
-                    <h2 onclick="openWeb()">Web Development</h2>
-                    <img src="./photos/webmod.jpg">
+                    <h2 id="m1">Web Development</h2>
+                    <img src="./webmod.jpg">
                     <div class="webbtnmod">
-            <button id="exploreBtn" >Explore</button>
+            <button id="WebExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
-                    <h2>UI/UX Design</h2>
-                    <img src="./photos/ui.jpg">
+                    <h2 id="m1">UI/UX Design</h2>
+                    <img src="./ui.jpg">
                     <div class="webtech">
             <button id="uiuxExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
-                    <h2>Computer Aided Designing</h2>
-                    <img src="./photos/comaiddes.jpg">
+                    <h2 id="m1">Computer Aided Designing</h2>
+                    <img src="./comaiddes.jpg">
                     <div class="webtech">
             <button id="cadExploreBtn" >Explore</button>
                     </div>
@@ -205,24 +237,24 @@
 
                 <div class="line">
                 <div class="boxs">
-                    <h2>Computer Aided Cutting</h2>
-                    <img src="./photos/comaidcut.jpg">
+                    <h2 id="m1">Computer Aided Cutting</h2>
+                    <img src="./comaidcut.jpg">
                     <div class="webtech">
-            <button id="moretab" >Explore</button>
+            <button id="CadExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
-                    <h2>3D Printing & Designing</h2>
-                    <img src="./photos/3d.jpg">
+                    <h2 id="m1">3D Printing & Designing</h2>
+                    <img src="./3d.jpg">
                     <div class="webtech">
-            <button id="moretab" >Explore</button>
+            <button id="D3ExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
-                    <h2>PCB Designing</h2>
-                    <img src="./photos/pcb.jpg">
+                    <h2 id="m1">PCB Designing</h2>
+                    <img src="./pcb.jpg">
                     <div class="webtech">
-            <button id="moretab" >Explore</button>
+            <button id="PCBExploreBtn" >Explore</button>
                     </div>
                 </div>
                 </div>
@@ -230,37 +262,37 @@
 
                  <div class="line">
                 <div class="boxs">
-                    <h2>IOT & Embedded System</h2>
-                    <img src="./photos/embeded.jpg">
+                    <h2 id="m1">IOT & Embedded System</h2>
+                    <img src="./embeded.jpg">
                     <div class="webtech">
-            <button id="moretab" >Explore</button>
+            <button id="IOTExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
-                    <h2>JAVA</h2>
-                    <img src="./photos/javamod.jpg">
+                    <h2 id="m1">JAVA</h2>
+                    <img src="./javamod.jpg">
                     <div class="webtech">
             <button id="javaExploreBtn" >Explore</button>
                     </div>
                 </div>
                 <div class="boxs">
-                    <h2>Networking</h2>
-                    <img src="./photos/networking.jpg">
+                    <h2 id="m1">Networking</h2>
+                    <img src="./networking.jpg">
                     <div class="webtech">
-            <button id="moretab" >Explore</button>
+            <button id="NetExploreBtn" >Explore</button>
                     </div>
                 </div>
                 </div>
 
                 <div class="line">
                 <div class="boxs">
-                    <h2>AI & ML</h2>
-                    <img src="./photos/aiml.jpg">
+                    <h2 id="m1">AI & ML</h2>
+                    <img src="./aiml.jpg">
                     <div class="webtech">
             <button id="moretab" >Explore</button>
                     </div>
                 </div>
-                </div>
+            </div>
             </div>
         </section>
 
@@ -270,7 +302,7 @@
         <section id="contact">
             <div class="message">
                 
-                    <h2>Contact Me</h2>
+                    <h2>Contact</h2>
                     <form>
                         <h3>Name :</h3>
                         <input type="text" placeholder="Name">
@@ -282,8 +314,8 @@
                         <textarea placeholder="Message"></textarea>
                         <br><br>
                         <div class="subbtn">
-                        <input type="submit" value="Submit">
-                        <input type="reset" value="Reset">
+                        <input type="submit" id="sub" value="Submit">
+                        <input type="reset" id="res" value="Reset">
                         </div>
                         <br>
 
@@ -301,9 +333,9 @@
 
          <section id="declaration">
             <div class="desec">
-
+       <button class="declaration-btn">
        <a href="./declaration.pdf" download class="declar"> Declaration </a>
-
+        </button>
             </div>
 
         </section>
@@ -375,15 +407,8 @@
 </footer>
 
    
+</div>
 
-
-
-
-
-    </div>
-
-    <script src="./script.js"></script>
-
+<script src="./script.js"></script>
 </body>
-
 </html>
