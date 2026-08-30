@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Fablab - Web Development</title>
-  <style>.canvas-grid-bg {
-    position: fixed;
+  <title>Digital Fablab - JAVA</title>
+  <style>
+.canvas-grid-bg {
+  position: fixed;
   inset: 0;
   z-index: -1;
   background-image:
@@ -38,7 +39,7 @@
 
 #webdev {
   font-family: var(--font-display);
-  font-size:25px;
+  font-size: 25px;
   text-align: center;
   margin-top: 24px;
   background: linear-gradient(135deg, #fff 30%, var(--text-dim));
@@ -73,6 +74,9 @@
   padding: 20px;
   clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .chhotobox:hover {
@@ -89,23 +93,8 @@
   letter-spacing: 1px;
   margin-bottom: 6px;
 }
-.chhotobox img{
-width: 310px;
-height: 190px;
-padding: 10px;
-display: flex;
-align-items: center;
-}
 
-/* NEW: hide image by default, only show when card has .show-img */
-.chhotobox img {
-  display: none;
-}
-.chhotobox.show-img img {
-  display: flex;
-}
-
-/* NEW: view button */
+/* View button */
 .view-img-btn {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -113,38 +102,42 @@ align-items: center;
   color: var(--cyan);
   background: rgba(87, 217, 201, 0.08);
   border: 1px solid rgba(87, 217, 201, 0.35);
-  padding: 6px 14px;
+  padding: 8px 14px;
   cursor: pointer;
   border-radius: 4px;
-  margin: 6px 0 4px;
+  margin-top: 16px;
   transition: background 0.2s ease, color 0.2s ease;
-  margin-top: 20px;
-  margin-left: 10px;
+  width: fit-content;
 }
+
 .view-img-btn:hover {
   background: var(--cyan);
   color: #0f172a;
 }
 
-/* NEW: lightbox modal for full view */
+/* Lightbox modal for full view */
 .img-modal-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 10000;
   align-items: center;
   justify-content: center;
 }
+
 .img-modal-overlay.active {
   display: flex;
 }
+
 .img-modal-overlay img {
   max-width: 90vw;
   max-height: 85vh;
   border: 2px solid var(--amber, #f2a93b);
   border-radius: 6px;
+  object-fit: contain;
 }
+
 .img-modal-close {
   position: absolute;
   top: 24px;
@@ -166,6 +159,7 @@ align-items: center;
   list-style: none;
   padding: 0;
   margin-top: 8px;
+  flex-grow: 1;
 }
 
 .chhotobox ul li {
@@ -184,53 +178,30 @@ align-items: center;
   font-weight: 700;
 }
 
-/* Image placeholder frame */
-.image-placeholder-frame {
-  border: 1px dashed rgba(148, 163, 184, 0.3);
-  background: var(--panel-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
-
-.placeholder-text {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  letter-spacing: 0.5px;
-}
-
-
-
-/* Go back button placement */
 .goBackBtn {
   display: block;
   margin: 0 auto 60px;
 }
-h1{
+
+h1 {
   font-size: 25px;
 }
-    
-    
-    </style>
+  </style>
   <link href="./style.css" rel="stylesheet">
 </head>
 <body>
 
   <div class="digfab">
-   <h1 id="y"> Digital Fablab</h1>
+    <h1 id="y">Digital Fablab</h1>
   </div>
 
+  <h1 id="webdev">JAVA</h1> 
+  <p class="pardev">Master core Java syntax, Object-Oriented Programming, data structures, and backend logic.</p>
 
-
- 
-   <h1 id="webdev">JAVA</h1> 
-   <p class="pardev">Learn 3D CAD design, parametric modeling, and digital fabrication workflows.</p>
-<div class="badabox">
-  <div class="chhotobox">
+  <div class="badabox">
+    <!-- Day 1 Card -->
+    <div class="chhotobox">
       <h1>Day 1</h1>
-      <img src="./photos/java1.png" >
       <ul>
         <li>Intro to programming fundamentals & Java language.</li>
         <li>Understanding basic code syntax and structure.</li>
@@ -238,13 +209,12 @@ h1{
         <li>Solving real-world problems with structured logic.</li>
         <li>Created simple practice programs.</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/java1.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/java1.jpeg')">View Image</button>
     </div>
 
     <!-- Day 2 Card -->
     <div class="chhotobox">
       <h1>Day 2</h1>
-      <img src="./photos/java2.png" >
       <ul>
         <li>Variables and data management in Java.</li>
         <li>Data types (int, float, char, boolean, String).</li>
@@ -252,13 +222,12 @@ h1{
         <li>User input handling via Scanner class.</li>
         <li>Data management and initialization practice.</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/java2.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/java2.jpeg')">View Image</button>
     </div>
 
     <!-- Day 3 Card -->
     <div class="chhotobox">
       <h1>Day 3</h1>
-      <img src="./photos/java 3.png">
       <ul>
         <li>Arithmetic, relational, and logical operators.</li>
         <li>Decision-making using if, if-else, and else-if.</li>
@@ -266,13 +235,12 @@ h1{
         <li>Setting logical conditions for code block execution.</li>
         <li>Practiced calculation-based programming problems.</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/java3.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/java3.jpeg')">View Image</button>
     </div>
 
     <!-- Day 4 Card -->
     <div class="chhotobox">
       <h1>Day 4</h1>
-      <img src="./photos/java 4.png" >
       <ul>
         <li>Loop structures (for, while, do-while loops).</li>
         <li>Entry-controlled vs exit-controlled loops.</li>
@@ -280,13 +248,12 @@ h1{
         <li>Loop control using break and continue.</li>
         <li>Optimized repetitive code blocks.</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/java4.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/java4.jpeg')">View Image</button>
     </div>
 
     <!-- Day 5 Card -->
     <div class="chhotobox">
       <h1>Day 5</h1>
-      <img src="./photos/java5.png" >
       <ul>
         <li>Methods for writing modular and reusable code.</li>
         <li>Passing parameters and setting return values.</li>
@@ -294,13 +261,12 @@ h1{
         <li>Array tracking, parsing, and data traversal.</li>
         <li>Improving code readability and flow.</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/java5.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/java5.jpeg')">View Image</button>
     </div>
 
     <!-- Day 6 Card -->
     <div class="chhotobox">
       <h1>Day 6</h1>
-      <img src="./photos/java6.png" >
       <ul>
         <li>Intro to Object-Oriented Programming (OOP).</li>
         <li>Classes and Objects architecture.</li>
@@ -308,13 +274,12 @@ h1{
         <li>The 4 Pillars: Polymorphism & Abstraction.</li>
         <li>Building organized, maintainable applications.</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/java6.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/java6.jpeg')">View Image</button>
     </div>
 
     <!-- Day 7 Card -->
     <div class="chhotobox">
       <h1>Day 7</h1>
-      <img src="./photos/java7.png" >
       <ul>
         <li>Built a functional Bank Management System.</li>
         <li>Parsed customer data, items, and quantities.</li>
@@ -322,55 +287,57 @@ h1{
         <li>Integrated loops, arrays, and variable pipelines.</li>
         <li>Strengthened baseline backend logic.</li>
       </ul>
-      <button class="view-img-btn" onclick="openImgModal('./photos/java7.jpeg')">View Image</button>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/java7.jpeg')">View Image</button>
     </div>
   </div>
-  
- <script src="./script.js"></script>
+
+  <!-- Lightbox Modal -->
+  <div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImgModal(event)">
+    <div class="img-modal-close" onclick="closeImgModal(event)">&times;</div>
+    <img id="imgModalImage" src="" alt="Preview">
+  </div>
+
+  <script src="./script.js"></script>
   <script>
-    // NEW: open/close logic for the image lightbox
-    function openImgModal(src) {
+    function openImgModal(event, src) {
+      if (event) event.stopPropagation();
       const overlay = document.getElementById('imgModalOverlay');
       const img = document.getElementById('imgModalImage');
       img.src = src;
       overlay.classList.add('active');
     }
+
     function closeImgModal(e) {
-      // close when clicking the overlay background or the close button
       if (e.target.id === 'imgModalOverlay' || e.target.classList.contains('img-modal-close')) {
         document.getElementById('imgModalOverlay').classList.remove('active');
       }
     }
   </script>
 
-  
-<!-- Perfect Redirection Back Arrow Button -->
-<a href="index.html#modules" style="
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
-    z-index: 9999;
-    border: 2px solid #e67e22;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-" 
-onmouseover="this.style.transform='scale(1.1)'; this.style.background='linear-gradient(135deg, #e67e22, #d35400)'; this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)'; this.style.borderColor='#ffffff';" 
-onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(135deg, #1e293b, #0f172a)'; this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)'; this.style.borderColor='#e67e22';">
-    &#8592;
-</a>
-
-
-
+  <!-- Redirection Back Arrow Button -->
+  <a href="index.html#modules" style="
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+      z-index: 9999;
+      border: 2px solid #e67e22;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  " 
+  onmouseover="this.style.transform='scale(1.1)'; this.style.background='linear-gradient(135deg, #e67e22, #d35400)'; this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)'; this.style.borderColor='#ffffff';" 
+  onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(135deg, #1e293b, #0f172a)'; this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)'; this.style.borderColor='#e67e22';">
+      &#8592;
+  </a>
 
 </body>
 </html>
