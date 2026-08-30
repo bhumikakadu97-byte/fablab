@@ -91,14 +91,14 @@
   margin-bottom: 6px;
 }
 
-/* Updated Image Styling (display: none ko hata kar display: block set kiya gaya hai) */
+/* Corrected Image Styling (Hides by default, shows on click) */
 .chhotobox img {
   width: 100%;
   max-width: 310px;
   height: 190px;
   object-fit: cover;
   padding: 10px 0;
-  display: block;
+  display: block; /* Images are visible in cards */
   margin: 0 auto;
 }
 
@@ -121,7 +121,7 @@
   color: #0f172a;
 }
 
-/* Lightbox modal for full view */
+/* NEW: Lightbox modal for full view */
 .img-modal-overlay {
   display: none;
   position: fixed;
@@ -303,7 +303,7 @@ Create real-world projects and bring your designs to life!</p>
     </div>
   </div>
 
-  <!-- Lightbox modal -->
+  <!-- Lightbox modal (Hidden by default) -->
   <div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImgModal(event)">
     <div class="img-modal-close" onclick="closeImgModal(event)">&times;</div>
     <img id="imgModalImage" src="" alt="Preview">
@@ -318,13 +318,14 @@ Create real-world projects and bring your designs to life!</p>
       overlay.classList.add('active');
     }
     function closeImgModal(e) {
+      // close when clicking the overlay background or the close button
       if (e.target.id === 'imgModalOverlay' || e.target.classList.contains('img-modal-close')) {
         document.getElementById('imgModalOverlay').classList.remove('active');
       }
     }
   </script>
 
-  <!-- Redirection Back Arrow Button -->
+  <!-- Perfect Redirection Back Arrow Button -->
   <a href="index.html#modules" style="
       position: fixed;
       top: 20px;
@@ -342,7 +343,7 @@ Create real-world projects and bring your designs to life!</p>
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
       z-index: 9999;
       border: 2px solid #e67e22;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.4, 1);
   " 
   onmouseover="this.style.transform='scale(1.1)'; this.style.background='linear-gradient(135deg, #e67e22, #d35400)'; this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)'; this.style.borderColor='#ffffff';" 
   onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(135deg, #1e293b, #0f172a)'; this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)'; this.style.borderColor='#e67e22';">
