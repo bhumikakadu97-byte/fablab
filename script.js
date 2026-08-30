@@ -183,7 +183,7 @@ document.addEventListener("click", (event) => {
             break;
 
         case "uiuxExploreBtn":
-            window.location.href = "mywebsec2.html";
+            window.location.href = "mywebsec.html";
             break;
 
         case "cadExploreBtn":
