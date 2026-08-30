@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Fablab - Web Development</title>
-  <style>.canvas-grid-bg {
-    position: fixed;
+  <style>
+.canvas-grid-bg {
+  position: fixed;
   inset: 0;
   z-index: -1;
   background-image:
@@ -38,7 +39,7 @@
 
 #webdev {
   font-family: var(--font-display);
-  font-size:25px;
+  font-size: 25px;
   text-align: center;
   margin-top: 24px;
   background: linear-gradient(135deg, #fff 30%, var(--text-dim));
@@ -89,23 +90,19 @@
   letter-spacing: 1px;
   margin-bottom: 6px;
 }
-.chhotobox img{
-width: 310px;
-height: 190px;
-padding: 10px;
-display: flex;
-align-items: center;
-}
 
-/* NEW: hide image by default, only show when card has .show-img */
+/* Updated Image Styling (display: none ko hata kar display: block set kiya gaya hai) */
 .chhotobox img {
-  display: none;
-}
-.chhotobox.show-img img {
-  display: flex;
+  width: 100%;
+  max-width: 310px;
+  height: 190px;
+  object-fit: cover;
+  padding: 10px 0;
+  display: block;
+  margin: 0 auto;
 }
 
-/* NEW: view button */
+/* View button */
 .view-img-btn {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -116,17 +113,15 @@ align-items: center;
   padding: 6px 14px;
   cursor: pointer;
   border-radius: 4px;
-  margin: 6px 0 4px;
+  margin: 16px 0 4px;
   transition: background 0.2s ease, color 0.2s ease;
-  margin-top: 20px;
-  margin-left: 10px;
 }
 .view-img-btn:hover {
   background: var(--cyan);
   color: #0f172a;
 }
 
-/* NEW: lightbox modal for full view */
+/* Lightbox modal for full view */
 .img-modal-overlay {
   display: none;
   position: fixed;
@@ -201,150 +196,121 @@ align-items: center;
   letter-spacing: 0.5px;
 }
 
-
-
 /* Go back button placement */
 .goBackBtn {
   display: block;
   margin: 0 auto 60px;
 }
-h1{
+h1 {
   font-size: 25px;
 }
-    
-    </style>
+  </style>
   <link href="./style.css" rel="stylesheet">
 </head>
 <body>
 
   <div class="digfab">
-   <h1 id="y"> Digital Fablab</h1>
+    <h1 id="y">Digital Fablab</h1>
   </div>
 
-
-
- 
-   <h1 id="webdev"> Web Development</h1> 
-   <p class="pardev">Turn ideas into interactive websites using HTML, CSS, and JavaScript.
+  <h1 id="webdev">Web Development</h1> 
+  <p class="pardev">Turn ideas into interactive websites using HTML, CSS, and JavaScript.
 Create real-world projects and bring your designs to life!</p>
-<div class="badabox">
-  <div class="chhotobox">
-    <h1>Day 1</h1>
-    
-    <img src="./photos/pro1.jpeg">
-   
-    <ul>
-        
-         <li>Basic tags & document structure</li>
+
+  <div class="badabox">
+    <div class="chhotobox">
+      <h1>Day 1</h1>
+      <img src="./photos/pro1.jpeg" alt="Day 1 Project">
+      <ul>
+        <li>Basic tags & document structure</li>
         <li>Headings & paragraphs</li> 
         <li>Lists & basic formatting</li>
         <li>Marquee tag</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal('./photos/pro1.jpeg')">View Image</button>
+    </div>
 
-    </ul>
-    <button class="view-img-btn" onclick="openImgModal('./photos/pro1.jpeg')">View Image</button>
-
-  </div>
-  <div class="chhotobox">
-    <h1>Day 2</h1>
-   
-    <img src="./photos/pro2.jpeg">
-    
-    <ul>
-        
-         <li>How to add video</li>
+    <div class="chhotobox">
+      <h1>Day 2</h1>
+      <img src="./photos/pro2.jpeg" alt="Day 2 Project">
+      <ul>
+        <li>How to add video</li>
         <li>How to add audio</li> 
         <li>How to add image</li>
         <li>How to add table</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal('./photos/pro2.jpeg')">View Image</button>
+    </div>
 
-    </ul>
-    <button class="view-img-btn" onclick="openImgModal('./photos/pro2.jpeg')">View Image</button>
-
-  </div>
-  <div class="chhotobox">
-    <h1>Day 3</h1>
-    
-    <img src="./photos/pro3.jpeg">
-    
-    <ul>
-        
-         <li>Basic form Elements.</li>
+    <div class="chhotobox">
+      <h1>Day 3</h1>
+      <img src="./photos/pro3.jpeg" alt="Day 3 Project">
+      <ul>
+        <li>Basic form Elements.</li>
         <li>Radio Button</li> 
         <li>Dropdown List</li>
         <li>Checkboxes and Submit Button</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal('./photos/pro3.jpeg')">View Image</button>
+    </div>
 
-    </ul>
-   <button class="view-img-btn" onclick="openImgModal('./photos/pro3.jpeg')">View Image</button>
-  </div>
-  <div class="chhotobox">
-   <h1>Day 4</h1>
-    
-    <img src="./photos/pro4.jpeg">
-    
-    <ul>
-        
-         <li>Header</li>
+    <div class="chhotobox">
+      <h1>Day 4</h1>
+      <img src="./photos/pro4.jpeg" alt="Day 4 Project">
+      <ul>
+        <li>Header</li>
         <li>Footer</li> 
         <li>Nav</li>
         <li>CSS Selector</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal('./photos/pro4.jpeg')">View Image</button>
+    </div>
 
-    </ul>
-    <button class="view-img-btn" onclick="openImgModal('./photos/pro4.jpeg')">View Image</button>
-  </div>
-  <div class="chhotobox">
-    <h1>Day 5</h1>
-   
-    <img src="./photos/pro5.jpeg">
-   
-    <ul>
+    <div class="chhotobox">
+      <h1>Day 5</h1>
+      <img src="./photos/pro5.jpeg" alt="Day 5 Project">
+      <ul>
         <li>Flexbox fundamentals</li>
-          <li>CSS Grid systems</li>
-          <li> Responsive design</li>
-           <li> query creation</li>
+        <li>CSS Grid systems</li>
+        <li>Responsive design</li>
+        <li>Query creation</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal('./photos/pro5.jpeg')">View Image</button>
+    </div>
 
-    </ul>
-    <button class="view-img-btn" onclick="openImgModal('./photos/pro5.jpeg')">View Image</button>
-  </div>
-  <div class="chhotobox"><h1>Day 6</h1>
-    
-    <img src="./photos/pro6.png">
-    
-    <ul>
-        
-         <li>Variables</li>
-        <li>functions</li> 
+    <div class="chhotobox">
+      <h1>Day 6</h1>
+      <img src="./photos/pro6.png" alt="Day 6 Project">
+      <ul>
+        <li>Variables</li>
+        <li>Functions</li> 
         <li>Operators</li>
         <li>Datatypes</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal('./photos/pro6.png')">View Image</button>
+    </div>
 
-    </ul>
-   <button class="view-img-btn" onclick="openImgModal('./photos/pro6.png')">View Image</button>
-   </div>
-  <div class="chhotobox">
-    <h1>Day 7</h1>
-    
-    <img src="./photos/pro7.jpeg">
-   
-    <ul>
-        
-         <li>Take input</li>
+    <div class="chhotobox">
+      <h1>Day 7</h1>
+      <img src="./photos/pro7.jpeg" alt="Day 7 Project">
+      <ul>
+        <li>Take input</li>
         <li>Add Task</li> 
         <li>Delete Task</li>
         <li>Different Properties</li>
-
-    </ul>
-    <button class="view-img-btn" onclick="openImgModal('./photos/pro7.jpeg')">View Image</button>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal('./photos/pro7.jpeg')">View Image</button>
+    </div>
   </div>
-</div>
 
-<!-- NEW: modal overlay used to show the full image on click -->
-<div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImgModal(event)">
-  <div class="img-modal-close" onclick="closeImgModal(event)">&times;</div>
-  <img id="imgModalImage" src="" alt="Preview">
-</div>
+  <!-- Lightbox modal -->
+  <div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImgModal(event)">
+    <div class="img-modal-close" onclick="closeImgModal(event)">&times;</div>
+    <img id="imgModalImage" src="" alt="Preview">
+  </div>
 
-  
   <script src="./script.js"></script>
   <script>
-    // NEW: open/close logic for the image lightbox
     function openImgModal(src) {
       const overlay = document.getElementById('imgModalOverlay');
       const img = document.getElementById('imgModalImage');
@@ -352,41 +318,36 @@ Create real-world projects and bring your designs to life!</p>
       overlay.classList.add('active');
     }
     function closeImgModal(e) {
-      // close when clicking the overlay background or the close button
       if (e.target.id === 'imgModalOverlay' || e.target.classList.contains('img-modal-close')) {
         document.getElementById('imgModalOverlay').classList.remove('active');
       }
     }
   </script>
 
-  
-<!-- Perfect Redirection Back Arrow Button -->
-<a href="index.html#modules" style="
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
-    z-index: 9999;
-    border: 2px solid #e67e22;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-" 
-onmouseover="this.style.transform='scale(1.1)'; this.style.background='linear-gradient(135deg, #e67e22, #d35400)'; this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)'; this.style.borderColor='#ffffff';" 
-onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(135deg, #1e293b, #0f172a)'; this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)'; this.style.borderColor='#e67e22';">
-    &#8592;
-</a>
-
-
-
+  <!-- Redirection Back Arrow Button -->
+  <a href="index.html#modules" style="
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+      z-index: 9999;
+      border: 2px solid #e67e22;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  " 
+  onmouseover="this.style.transform='scale(1.1)'; this.style.background='linear-gradient(135deg, #e67e22, #d35400)'; this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)'; this.style.borderColor='#ffffff';" 
+  onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(135deg, #1e293b, #0f172a)'; this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)'; this.style.borderColor='#e67e22';">
+      &#8592;
+  </a>
 
 </body>
 </html>
