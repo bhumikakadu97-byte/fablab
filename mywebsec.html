@@ -109,6 +109,7 @@
   transition: background 0.2s ease, color 0.2s ease;
   width: fit-content;
 }
+
 .view-img-btn:hover {
   background: var(--cyan);
   color: #0f172a;
@@ -124,15 +125,18 @@
   align-items: center;
   justify-content: center;
 }
+
 .img-modal-overlay.active {
   display: flex;
 }
+
 .img-modal-overlay img {
   max-width: 90vw;
   max-height: 85vh;
   border: 2px solid var(--amber, #f2a93b);
   border-radius: 6px;
 }
+
 .img-modal-close {
   position: absolute;
   top: 24px;
@@ -178,6 +182,7 @@
   display: block;
   margin: 0 auto 60px;
 }
+
 h1 {
   font-size: 25px;
 }
@@ -269,6 +274,7 @@ h1 {
       img.src = src;
       overlay.classList.add('active');
     }
+
     function closeImgModal(e) {
       if (e.target.id === 'imgModalOverlay' || e.target.classList.contains('img-modal-close')) {
         document.getElementById('imgModalOverlay').classList.remove('active');
