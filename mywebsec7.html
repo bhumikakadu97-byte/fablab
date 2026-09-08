@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Fablab - Fusion 360</title>
+  <style>
+.canvas-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 20%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 20%, black 30%, transparent 75%);
+  opacity: 0.6;
+}
+
+.digfab {
+  max-width: fit-content;
+  margin: 40px auto 0;
+  padding: 8px 20px;
+  border: 1px solid rgba(87, 217, 201, 0.35);
+  background: rgba(87, 217, 201, 0.06);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.digfab #y {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#webdev {
+  font-family: var(--font-display);
+  font-size: 25px;
+  text-align: center;
+  margin-top: 24px;
+  background: linear-gradient(135deg, #fff 30%, var(--text-dim));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pardev {
+  text-align: center;
+  color: var(--text-dim);
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-size: 1.05rem;
+}
+
+/* Card grid */
+.badabox {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+
+.chhotobox {
+  flex: 1 1 300px;
+  max-width: 320px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 20px;
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chhotobox:hover {
+  transform: translateY(-8px);
+  border-color: var(--amber);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(242, 169, 59, 0.2);
+}
+
+.chhotobox h1 {
+  font-family: var(--font-mono);
+  font-size: 0.95rem !important;
+  color: var(--amber);
+  text-align: left;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+/* View button */
+.view-img-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--cyan);
+  background: rgba(87, 217, 201, 0.08);
+  border: 1px solid rgba(87, 217, 201, 0.35);
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 16px;
+  transition: background 0.2s ease, color 0.2s ease;
+  width: fit-content;
+}
+
+.view-img-btn:hover {
+  background: var(--cyan);
+  color: #0f172a;
+}
+
+/* Lightbox modal for full view */
+.img-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-modal-overlay.active {
+  display: flex;
+}
+
+.img-modal-overlay img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border: 2px solid var(--amber, #f2a93b);
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #fff;
+  border: 2px solid #e67e22;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chhotobox ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+  flex-grow: 1;
+}
+
+.chhotobox ul li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.chhotobox ul li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.goBackBtn {
+  display: block;
+  margin: 0 auto 60px;
+}
+
+h1 {
+  font-size: 25px;
+}
+  </style>
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="digfab">
+    <h1 id="y">Digital Fablab</h1>
+  </div>
+
+  <h1 id="webdev">Networking</h1> 
+  <p class="pardev">Networking is the connection of two or more computers to each other.</p>
+
+  <div class="badabox">
+    <div class="chhotobox">
+      <h1>Day 1</h1>
+      <ul>
+        <li> Meaning and basics of data communication</li>
+        <li> Components of data communication</li> 
+        <li> Data transmission</li>
+        <li> Characteristics of data communication</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/data1.jpg')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 2</h1>
+      <ul>
+        <li>What is a computer network?</li>
+        <li> Need for networking</li>
+        <li>Need for networking</li> 
+        <li>Types of networks</li>
+        <li>PAN, LAN, MAN, WAN</li>   
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/data2.png')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 3</h1>
+      <ul>
+        <li>Network topologies</li>
+        <li>Bus, Star, Ring, Mesh, Hybrid</li>
+        <li>Hub, Switch, Router</li>
+
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/data3.png')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 4</h1>
+      <ul>
+        <li> Introduction to OSI model</li>
+         <li> Seven layers of OSI</li>
+          <li> Functions of each layer</li>
+            <li>Introduction to network protocols</li>
+            <li> Importance of protocols</li>
+
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/data4.jpg')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 5</h1>
+      <ul>
+        <li>Introduction to HTTP</li> 
+       <li>HTTP methods: GET, POST, PUT, DELETE</li> 
+         <li>IP addresses</li> 
+          <li>IPv4 and IPv6</li> 
+           <li> DHCP</li>
+           <li> DNS</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/data5.jpg')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 6</h1>
+      <ul class="box-points">
+       <li>What is ARP</li> 
+       <li>What is ICMP</li> 
+        <li>Revision of previous topics</li> 
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/data6.jpg')">View Image</button>
+    </div>
+
+    <div class="chhotobox">
+      <h1>Day 7</h1>
+      <ul>
+       <li>What is websocket</li> 
+       <li>What is Web Real-time communication(RTC)</li> 
+       <li>Project ideas and discussion</li>
+      </ul>
+      <button class="view-img-btn" onclick="openImgModal(event, './photos/data7.png')">View Image</button>
+    </div>
+  </div>
+
+  <!-- Lightbox modal -->
+  <div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImgModal(event)">
+    <div class="img-modal-close" onclick="closeImgModal(event)">&times;</div>
+    <img id="imgModalImage" src="" alt="Preview">
+  </div>
+
+  <script src="./script.js"></script>
+  <script>
+    function openImgModal(event, src) {
+      if (event) event.stopPropagation();
+      const overlay = document.getElementById('imgModalOverlay');
+      const img = document.getElementById('imgModalImage');
+      img.src = src;
+      overlay.classList.add('active');
+    }
+
+    function closeImgModal(e) {
+      if (e.target.id === 'imgModalOverlay' || e.target.classList.contains('img-modal-close')) {
+        document.getElementById('imgModalOverlay').classList.remove('active');
+      }
+    }
+  </script>
+
+  <!-- Redirection Back Arrow Button -->
+  <a href="index.html#modules" style="
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+      z-index: 9999;
+      border: 2px solid #e67e22;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  " 
+  onmouseover="this.style.transform='scale(1.1)'; this.style.background='linear-gradient(135deg, #e67e22, #d35400)'; this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)'; this.style.borderColor='#ffffff';" 
+  onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(135deg, #1e293b, #0f172a)'; this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)'; this.style.borderColor='#e67e22';">
+      &#8592;
+  </a>
+
+</body>
+</html>
