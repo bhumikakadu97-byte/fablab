@@ -195,7 +195,7 @@ document.addEventListener("click", (event) => {
             break;
 
         case "NetExploreBtn":
-            window.location.href = "mywebsec9.html";
+            window.location.href = "mywebsec7.html";
             break;
 
         default:
