@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Fablab - AIML</title>
+
+  <style>
+    .canvas-grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at 50% 20%, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at 50% 20%, black 30%, transparent 75%);
+      opacity: 0.6;
+    }
+
+    .digfab {
+      max-width: fit-content;
+      margin: 40px auto 0;
+      padding: 8px 20px;
+      border: 1px solid rgba(87, 217, 201, 0.35);
+      background: rgba(87, 217, 201, 0.06);
+      clip-path: polygon(
+        10px 0, 100% 0, 100% calc(100% - 10px),
+        calc(100% - 10px) 100%, 0 100%, 0 10px
+      );
+    }
+
+    .digfab #y {
+      font-family: var(--font-mono);
+      font-size: 0.70rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--cyan);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #webdev {
+      font-family: var(--font-display);
+      font-size: 25px;
+      text-align: center;
+      margin-top: 24px;
+      background: linear-gradient(135deg, #fff 30%, var(--text-dim));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .pardev {
+      text-align: center;
+      color: var(--text-dim);
+      margin-top: 10px;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+    }
+
+    /* Card grid */
+    .badabox {
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      padding: 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .chhotobox {
+      flex: 1 1 300px;
+      max-width: 320px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 20px;
+
+      clip-path: polygon(
+        16px 0, 100% 0, 100% calc(100% - 16px),
+        calc(100% - 16px) 100%, 0 100%, 0 16px
+      );
+
+      transition:
+        transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow 0.35s ease,
+        border-color 0.3s ease;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .chhotobox:hover {
+      transform: translateY(-8px);
+      border-color: var(--amber);
+      box-shadow:
+        0 16px 32px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(242, 169, 59, 0.2);
+    }
+
+    .chhotobox h1 {
+      font-family: var(--font-mono);
+      font-size: 0.95rem !important;
+      color: var(--amber);
+      text-align: left;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    /* View button */
+    .view-img-btn {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      color: var(--cyan);
+      background: rgba(87, 217, 201, 0.08);
+      border: 1px solid rgba(87, 217, 201, 0.35);
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 16px;
+      transition: background 0.2s ease, color 0.2s ease;
+      width: fit-content;
+    }
+
+    .view-img-btn:hover {
+      background: var(--cyan);
+      color: #0f172a;
+    }
+
+    /* Lightbox modal */
+    .img-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-modal-overlay.active {
+      display: flex;
+    }
+
+    .img-modal-overlay img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border: 2px solid var(--amber, #f2a93b);
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    .img-modal-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1e293b;
+      color: #fff;
+      border: 2px solid #e67e22;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .chhotobox ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+      flex-grow: 1;
+    }
+
+    .chhotobox ul li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .chhotobox ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 25px;
+    }
+  </style>
+
+  <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Digital Fablab Heading -->
+  <div class="digfab">
+    <h1 id="y">Digital Fablab</h1>
+  </div>
+
+  <!-- Page Heading -->
+  <h1 id="webdev">AIML</h1>
+
+  <p class="pardev">
+    Artificial Intelligence, Machine Learning & Python — from fundamentals to data preprocessing and visualization.
+  </p>
+
+  <!-- ================= DAY CARDS ================= -->
+
+  <div class="badabox">
+
+    <!-- DAY 1 -->
+    <div class="chhotobox">
+      <h1>Day 1 — AI, ML & Python Foundations</h1>
+      <ul>
+        <li>Introduction to Artificial Intelligence, Machine Learning and Deep Learning.</li>
+        <li>Learned supervised, unsupervised and reinforcement learning.</li>
+        <li>Explored real-world AI/ML applications.</li>
+        <li>Python basics: variables, operators, conditions, loops and functions.</li>
+        <li>Practiced BMI Calculator, FizzBuzz and Mini Calculator.</li>
+        <li>Created functions like prime check, factorial and reverse string.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml1.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 2 -->
+    <div class="chhotobox">
+      <h1>Day 2 — Python Data Structures</h1>
+      <ul>
+        <li>Learned Lists, Tuples, Sets and Dictionaries.</li>
+        <li>Understood when to choose each data structure.</li>
+        <li>Practiced indexing and slicing.</li>
+        <li>Learned list, set and dictionary comprehensions.</li>
+        <li>Explored useful string methods.</li>
+        <li>Built Student Record System and Contact Book.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml2.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 3 -->
+    <div class="chhotobox">
+      <h1>Day 3 — NumPy</h1>
+      <ul>
+        <li>Introduction to NumPy and numerical computing.</li>
+        <li>Created and worked with NumPy arrays.</li>
+        <li>Practiced array indexing and slicing.</li>
+        <li>Learned array shape and dimensions.</li>
+        <li>Explored NumPy data types.</li>
+        <li>Performed essential array operations through coding exercises.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml3.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 4 -->
+    <div class="chhotobox">
+      <h1>Day 4 — NumPy Practice</h1>
+      <ul>
+        <li>Practiced NumPy concepts through practical coding.</li>
+        <li>Worked with arrays and numerical operations.</li>
+        <li>Applied indexing, slicing and array manipulation.</li>
+        <li>Strengthened understanding of dimensions and shapes.</li>
+        <li>Used NumPy for basic data analysis tasks.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml4.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 5 -->
+    <div class="chhotobox">
+      <h1>Day 5 — Pandas Manipulation</h1>
+      <ul>
+        <li>Learned Pandas DataFrames and data manipulation.</li>
+        <li>Selected rows and columns from datasets.</li>
+        <li>Filtered data using conditions.</li>
+        <li>Sorted and modified DataFrame data.</li>
+        <li>Learned merging, concatenation and grouping.</li>
+        <li>Performed aggregation and added new columns.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml5.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 6 -->
+    <div class="chhotobox">
+      <h1>Day 6 — Data Cleaning</h1>
+      <ul>
+        <li>Introduction to data cleaning techniques.</li>
+        <li>Handled missing values in datasets.</li>
+        <li>Removed duplicate records.</li>
+        <li>Fixed incorrect data types.</li>
+        <li>Detected and treated outliers.</li>
+        <li>Standardised inconsistent text values.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml6.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 7 -->
+    <div class="chhotobox">
+      <h1>Day 7 — Data Cleaning Project</h1>
+      <ul>
+        <li>Applied data cleaning concepts in an end-to-end project.</li>
+        <li>Fixed incorrect data types.</li>
+        <li>Standardised inconsistent text.</li>
+        <li>Removed duplicate records.</li>
+        <li>Treated outliers and handled missing values.</li>
+        <li>Worked with a complete cleaned dataset.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml7.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 8 -->
+    <div class="chhotobox">
+      <h1>Day 8 — Data Preprocessing</h1>
+      <ul>
+        <li>Learned data preprocessing for Machine Learning.</li>
+        <li>Covered encoding of categorical data.</li>
+        <li>Learned feature scaling and normalisation.</li>
+        <li>Understood standard deviation and variance.</li>
+        <li>Practiced Z-Score transformation.</li>
+        <li>Learned Train-Test Split for ML models.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml8.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 9 -->
+    <div class="chhotobox">
+      <h1>Day 9 — Data Visualization</h1>
+      <ul>
+        <li>Introduction to Data Visualization.</li>
+        <li>Learned how to convert data into visual insights.</li>
+        <li>Worked with Matplotlib for creating visualizations.</li>
+        <li>Explored Seaborn for statistical visualizations.</li>
+        <li>Used charts and graphs to understand data patterns.</li>
+        <li>Practiced visualization through coding examples.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml9.png')">
+        View Image
+      </button>
+    </div>
+
+
+    <!-- DAY 10 -->
+    <div class="chhotobox">
+      <h1>Day 10 — AIML Module Completion</h1>
+      <ul>
+        <li>Revised the key concepts of Artificial Intelligence.</li>
+        <li>Revised important Machine Learning concepts.</li>
+        <li>Connected Python, NumPy and Pandas with AIML workflows.</li>
+        <li>Reviewed data cleaning, preprocessing and visualization.</li>
+        <li>Completed practical hands-on coding sessions.</li>
+        <li>Concluded the module with an AIML assessment test.</li>
+      </ul>
+
+      <button class="view-img-btn"
+        onclick="openImgModal(event, './photos/aiml10.png')">
+        View Image
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- ================= LIGHTBOX MODAL ================= -->
+
+  <div class="img-modal-overlay"
+       id="imgModalOverlay"
+       onclick="closeImgModal(event)">
+
+    <div class="img-modal-close"
+         onclick="closeImgModal(event)">
+      &times;
+    </div>
+
+    <img id="imgModalImage"
+         src=""
+         alt="AIML Day Preview">
+
+  </div>
+
+
+  <!-- Existing Script -->
+  <script src="./script.js"></script>
+
+  <!-- Image Modal Script -->
+  <script>
+
+    function openImgModal(event, src) {
+
+      if (event) {
+        event.stopPropagation();
+      }
+
+      const overlay =
+        document.getElementById('imgModalOverlay');
+
+      const img =
+        document.getElementById('imgModalImage');
+
+      img.onerror = function () {
+        console.error("Image load failed: " + src);
+      };
+
+      img.src = src;
+
+      overlay.classList.add('active');
+    }
+
+
+    function closeImgModal(e) {
+
+      if (
+        e.target.id === 'imgModalOverlay' ||
+        e.target.classList.contains('img-modal-close')
+      ) {
+
+        document
+          .getElementById('imgModalOverlay')
+          .classList.remove('active');
+
+      }
+    }
+
+  </script>
+
+
+  <!-- ================= BACK BUTTON ================= -->
+
+  <a href="index.html#modules"
+     style="
+       position: fixed;
+       top: 20px;
+       left: 20px;
+       width: 48px;
+       height: 48px;
+       background: linear-gradient(135deg, #1e293b, #0f172a);
+       color: #ffffff;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       text-decoration: none;
+       font-size: 1.5rem;
+       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+       z-index: 9999;
+       border: 2px solid #e67e22;
+       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+     "
+
+     onmouseover="
+       this.style.transform='scale(1.1)';
+       this.style.background='linear-gradient(135deg, #e67e22, #d35400)';
+       this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)';
+       this.style.borderColor='#ffffff';
+     "
+
+     onmouseout="
+       this.style.transform='scale(1)';
+       this.style.background='linear-gradient(135deg, #1e293b, #0f172a)';
+       this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)';
+       this.style.borderColor='#e67e22';
+     ">
+
+    &#8592;
+
+  </a>
+
+</body>
+</html>
