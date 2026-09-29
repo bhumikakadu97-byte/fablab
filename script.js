@@ -198,7 +198,7 @@ document.addEventListener("click", (event) => {
             window.location.href = "mywebsec7.html";
             break;
         case "moretab":
-            window.location.href = "mywebsecaiml.html";
+            window.location.href = "websecaiml.html";
             break;
             
 
