@@ -197,7 +197,7 @@ document.addEventListener("click", (event) => {
         case "NetExploreBtn":
             window.location.href = "mywebsec7.html";
             break;
-        case "AimlExploreBtn":
+        case "moretab":
             window.location.href = "mywebsecaiml.html";
             break;
             
