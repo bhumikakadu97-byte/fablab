@@ -4,15 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Fablab - AIML</title>
-
   <style>
     .canvas-grid-bg {
       position: fixed;
       inset: 0;
       z-index: -1;
-      background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
       background-size: 40px 40px;
       mask-image: radial-gradient(circle at 50% 20%, black 30%, transparent 75%);
       -webkit-mask-image: radial-gradient(circle at 50% 20%, black 30%, transparent 75%);
@@ -26,8 +23,12 @@
       border: 1px solid rgba(87, 217, 201, 0.35);
       background: rgba(87, 217, 201, 0.06);
       clip-path: polygon(
-        10px 0, 100% 0, 100% calc(100% - 10px),
-        calc(100% - 10px) 100%, 0 100%, 0 10px
+        10px 0,
+        100% 0,
+        100% calc(100% - 10px),
+        calc(100% - 10px) 100%,
+        0 100%,
+        0 10px
       );
     }
 
@@ -76,17 +77,15 @@
       background: var(--panel);
       border: 1px solid var(--line);
       padding: 20px;
-
       clip-path: polygon(
-        16px 0, 100% 0, 100% calc(100% - 16px),
-        calc(100% - 16px) 100%, 0 100%, 0 16px
+        16px 0,
+        100% 0,
+        100% calc(100% - 16px),
+        calc(100% - 16px) 100%,
+        0 100%,
+        0 16px
       );
-
-      transition:
-        transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-        box-shadow 0.35s ease,
-        border-color 0.3s ease;
-
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -95,9 +94,7 @@
     .chhotobox:hover {
       transform: translateY(-8px);
       border-color: var(--amber);
-      box-shadow:
-        0 16px 32px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(242, 169, 59, 0.2);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(242, 169, 59, 0.2);
     }
 
     .chhotobox h1 {
@@ -109,7 +106,7 @@
       margin-bottom: 6px;
     }
 
-    /* View button */
+    /* Colab Link Button */
     .view-img-btn {
       font-family: var(--font-mono);
       font-size: 0.8rem;
@@ -118,56 +115,17 @@
       background: rgba(87, 217, 201, 0.08);
       border: 1px solid rgba(87, 217, 201, 0.35);
       padding: 8px 14px;
-      cursor: pointer;
       border-radius: 4px;
       margin-top: 16px;
       transition: background 0.2s ease, color 0.2s ease;
       width: fit-content;
+      display: inline-block;
+      text-decoration: none;
     }
 
     .view-img-btn:hover {
       background: var(--cyan);
       color: #0f172a;
-    }
-
-    /* Lightbox modal */
-    .img-modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .img-modal-overlay.active {
-      display: flex;
-    }
-
-    .img-modal-overlay img {
-      max-width: 90vw;
-      max-height: 85vh;
-      border: 2px solid var(--amber, #f2a93b);
-      border-radius: 6px;
-      object-fit: contain;
-    }
-
-    .img-modal-close {
-      position: absolute;
-      top: 24px;
-      right: 32px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #1e293b;
-      color: #fff;
-      border: 2px solid #e67e22;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
     }
 
     .chhotobox ul {
@@ -197,10 +155,8 @@
       font-size: 25px;
     }
   </style>
-
   <link href="./style.css" rel="stylesheet">
 </head>
-
 <body>
 
   <!-- Digital Fablab Heading -->
@@ -210,15 +166,12 @@
 
   <!-- Page Heading -->
   <h1 id="webdev">AIML</h1>
-
   <p class="pardev">
     Artificial Intelligence, Machine Learning & Python — from fundamentals to data preprocessing and visualization.
   </p>
 
   <!-- ================= DAY CARDS ================= -->
-
   <div class="badabox">
-
     <!-- DAY 1 -->
     <div class="chhotobox">
       <h1>Day 1 — AI, ML & Python Foundations</h1>
@@ -230,13 +183,10 @@
         <li>Practiced BMI Calculator, FizzBuzz and Mini Calculator.</li>
         <li>Created functions like prime check, factorial and reverse string.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml1.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="https://colab.research.google.com/drive/1oGgxAN2jLDxTsgzpOYiCHQtX6Y6yOYgj?usp=sharing" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 2 -->
     <div class="chhotobox">
@@ -249,13 +199,10 @@
         <li>Explored useful string methods.</li>
         <li>Built Student Record System and Contact Book.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml2.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="https://colab.research.google.com/drive/1zrR3fz-4QFIttIhYgr89CLdEpa16i5iq?usp=sharing" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 3 -->
     <div class="chhotobox">
@@ -268,13 +215,10 @@
         <li>Explored NumPy data types.</li>
         <li>Performed essential array operations through coding exercises.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml3.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="https://colab.research.google.com/drive/1q_pU4cYvkdB6dJEBpZhp_4pVER8qMo9f?usp=sharing" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 4 -->
     <div class="chhotobox">
@@ -286,13 +230,10 @@
         <li>Strengthened understanding of dimensions and shapes.</li>
         <li>Used NumPy for basic data analysis tasks.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml4.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="https://colab.research.google.com/drive/1WvRzxaPrrRPX64XiaxXIyuVaqotXf8Mw?usp=sharing" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 5 -->
     <div class="chhotobox">
@@ -305,13 +246,10 @@
         <li>Learned merging, concatenation and grouping.</li>
         <li>Performed aggregation and added new columns.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml5.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="YOUR_COLAB_URL_DAY_5" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 6 -->
     <div class="chhotobox">
@@ -324,13 +262,10 @@
         <li>Detected and treated outliers.</li>
         <li>Standardised inconsistent text values.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml6.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="YOUR_COLAB_URL_DAY_6" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 7 -->
     <div class="chhotobox">
@@ -343,13 +278,10 @@
         <li>Treated outliers and handled missing values.</li>
         <li>Worked with a complete cleaned dataset.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml7.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="YOUR_COLAB_URL_DAY_7" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 8 -->
     <div class="chhotobox">
@@ -362,13 +294,10 @@
         <li>Practiced Z-Score transformation.</li>
         <li>Learned Train-Test Split for ML models.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml8.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="YOUR_COLAB_URL_DAY_8" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 9 -->
     <div class="chhotobox">
@@ -381,13 +310,10 @@
         <li>Used charts and graphs to understand data patterns.</li>
         <li>Practiced visualization through coding examples.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml9.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="YOUR_COLAB_URL_DAY_9" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
 
     <!-- DAY 10 -->
     <div class="chhotobox">
@@ -400,119 +326,45 @@
         <li>Completed practical hands-on coding sessions.</li>
         <li>Concluded the module with an AIML assessment test.</li>
       </ul>
-
-      <button class="view-img-btn"
-        onclick="openImgModal(event, './photos/aiml10.png')">
-        View Image
-      </button>
+      <a class="view-img-btn" href="YOUR_COLAB_URL_DAY_10" target="_blank" rel="noopener noreferrer">
+        Open in Colab
+      </a>
     </div>
-
   </div>
 
-
-  <!-- ================= LIGHTBOX MODAL ================= -->
-
-  <div class="img-modal-overlay"
-       id="imgModalOverlay"
-       onclick="closeImgModal(event)">
-
-    <div class="img-modal-close"
-         onclick="closeImgModal(event)">
-      &times;
-    </div>
-
-    <img id="imgModalImage"
-         src=""
-         alt="AIML Day Preview">
-
-  </div>
-
-
-  <!-- Existing Script -->
   <script src="./script.js"></script>
 
-  <!-- Image Modal Script -->
-  <script>
-
-    function openImgModal(event, src) {
-
-      if (event) {
-        event.stopPropagation();
-      }
-
-      const overlay =
-        document.getElementById('imgModalOverlay');
-
-      const img =
-        document.getElementById('imgModalImage');
-
-      img.onerror = function () {
-        console.error("Image load failed: " + src);
-      };
-
-      img.src = src;
-
-      overlay.classList.add('active');
-    }
-
-
-    function closeImgModal(e) {
-
-      if (
-        e.target.id === 'imgModalOverlay' ||
-        e.target.classList.contains('img-modal-close')
-      ) {
-
-        document
-          .getElementById('imgModalOverlay')
-          .classList.remove('active');
-
-      }
-    }
-
-  </script>
-
-
   <!-- ================= BACK BUTTON ================= -->
-
-  <a href="index.html#modules"
-     style="
-       position: fixed;
-       top: 20px;
-       left: 20px;
-       width: 48px;
-       height: 48px;
-       background: linear-gradient(135deg, #1e293b, #0f172a);
-       color: #ffffff;
-       border-radius: 50%;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       text-decoration: none;
-       font-size: 1.5rem;
-       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
-       z-index: 9999;
-       border: 2px solid #e67e22;
-       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-     "
-
-     onmouseover="
-       this.style.transform='scale(1.1)';
-       this.style.background='linear-gradient(135deg, #e67e22, #d35400)';
-       this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)';
-       this.style.borderColor='#ffffff';
-     "
-
-     onmouseout="
-       this.style.transform='scale(1)';
-       this.style.background='linear-gradient(135deg, #1e293b, #0f172a)';
-       this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)';
-       this.style.borderColor='#e67e22';
-     ">
-
+  <a href="index.html#modules" style="
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    z-index: 9999;
+    border: 2px solid #e67e22;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  " onmouseover="
+    this.style.transform='scale(1.1)';
+    this.style.background='linear-gradient(135deg, #e67e22, #d35400)';
+    this.style.boxShadow='0 6px 18px rgba(230, 126, 34, 0.4)';
+    this.style.borderColor='#ffffff';
+  " onmouseout="
+    this.style.transform='scale(1)';
+    this.style.background='linear-gradient(135deg, #1e293b, #0f172a)';
+    this.style.boxShadow='0 4px 12px rgba(15, 23, 42, 0.2)';
+    this.style.borderColor='#e67e22';
+  ">
     &#8592;
-
   </a>
-
 </body>
 </html>
